@@ -7,16 +7,9 @@ import (
 	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
 )
 
-func NewKafkaConsumer(msgChan chan *ckafka.Message) *kafkaConsumer {
-	return &kafkaConsumer{
-		MsgChan: msgChan,
-	}
-
-}
-
 func NewKafkaProducer() *ckafka.Producer {
 	configmap := &ckafka.ConfigMap{
-		"bootstrap.servers": os.Getenv("KafkaBootstrapServer"),
+		"bootstrap.servers": os.Getenv("KafkaBootstrapServers"),
 	}
 
 	p, err := ckafka.NewProducer(configmap)

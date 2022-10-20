@@ -8,5 +8,12 @@ services:
     container_name: simulator
     volumes:
       - .:/go/src/
+    networks: 
+      - kafka_broker-kafka
     extra_hosts: #Server para conectar as aplicações que estão em diferentes redes
       - "host.docker.internal:172.17.0.1"
+
+networks: 
+  kafka_broker-kafka:
+    external: true
+      
